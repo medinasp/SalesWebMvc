@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SalesWebMvc;
 using SalesWebMvc.Data;
+using SalesWebMvc.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +11,7 @@ var connectionStringMysql = builder.Configuration.GetConnectionString("SalesWebM
 builder.Services.AddDbContext<SalesWebMvcContext>(options => options.UseMySql(connectionStringMysql, ServerVersion.Parse("8.0.25-mysql")));
 
 builder.Services.AddScoped<SeedingService>();
+builder.Services.AddScoped<SellerService>();
 
 var app = builder.Build();
 
