@@ -9,12 +9,20 @@ public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
 
-    public HomeController(ILogger<HomeController> logger, SeedingService seedingService)
+    //Incluí o método Seed pra rodar no home porque não sabia como rodar a aplicação direto no StartUp
+    //direto pela injeção de dependência no Program.cs, depois que eu aprendi como fazer, incluindo a linha
+    //app.Services.CreateScope().ServiceProvider.GetRequiredService<SeedingService>().Seed();
+    //eu removi o serviço daqui e só deixei comentado para referência futura
+
+    //public HomeController(ILogger<HomeController> logger, SeedingService seedingService)
+    //{
+    //    _logger = logger;
+    //    seedingService.Seed();
+    //}
+
+    public HomeController(ILogger<HomeController> logger)
     {
         _logger = logger;
-
-        //Serviço abaixo é rodado só na primeira vez para popular algumas tabelas
-        //seedingService.Seed();
     }
 
     public IActionResult Index()

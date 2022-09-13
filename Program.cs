@@ -36,6 +36,11 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+//Abaixo exemplo de como rodar a injeção de dependência, no caso o SeedService adicionado acima: "builder.Services.AddScoped<SeedingService>();",
+//no Startup do programa. Apesar de ter uma lógica para não repopular o banco, vou deixar aqui comentado pra
+//não ficar rodando sempre que executar o programa.
+//app.Services.CreateScope().ServiceProvider.GetRequiredService<SeedingService>().Seed();
+
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
