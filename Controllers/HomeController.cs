@@ -12,7 +12,9 @@ public class HomeController : Controller
     public HomeController(ILogger<HomeController> logger, SeedingService seedingService)
     {
         _logger = logger;
-        seedingService.Seed();
+
+        //Serviço abaixo é rodado só na primeira vez para popular algumas tabelas
+        //seedingService.Seed();
     }
 
     public IActionResult Index()

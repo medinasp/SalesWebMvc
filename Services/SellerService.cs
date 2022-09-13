@@ -64,9 +64,22 @@ namespace SalesWebMvc.Services
         //Chamada Assíncrona incluindo Task(async e await)
         public async Task RemoveAsync(int id)
         {
-            var o = await _context.Seller.FindAsync(id);
-            _context.Seller.Remove(o);
-            await _context.SaveChangesAsync();
+            try
+            {
+                var o = await _context.Seller.FindAsync(id);
+                _context.Seller.Remove(o);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException e)
+            {
+                //Mensagem interna do Entity:
+                //throw new IntegrityException(e.Message);
+
+                //Mensagem personalizada
+                throw new IntegrityException("Cant delete seller because he/she has sales");
+
+            }
+
         }
 
         ////Chamada síncrona:
