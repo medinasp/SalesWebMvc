@@ -5,8 +5,10 @@
     ViewData["Title"] = "Error";
 }
 
-<h1 class="text-danger">@ViewData["Title"].</h1>
+<h1 class="text-danger">@ViewData["Title"]</h1>
 <h2 class="text-danger">@Model.Message</h2>
+
+<a asp-action="Index"  class="btn btn-default">Back to List</a>
 
 @if (Model.ShowRequestId)
 {
