@@ -51,7 +51,7 @@ namespace SalesWebMvc.Controllers
             ViewData["minDate"] = minDate.Value.ToString("yyyy-MM-dd");
             ViewData["maxDate"] = maxDate.Value.ToString("yyyy-MM-dd");
 
-            var result = await _salesRecordService.FindByDateAsync(minDate, maxDate);
+            var result = await _salesRecordService.FindByDateGroupingAsync(minDate, maxDate);
             return View(result);
         }
 
